@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Color Boxes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #f4f4f4;
+        height: 100vh;
+      }
+
+      .container {
+        width: 70%;
+        border: 5px solid #333;
+        border-radius: 15px;
+        padding: 20px;
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 2px solid black;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background-color: gray;
+        transition: all 0.4s ease-in-out;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .box:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+
+      button {
+        margin-top: 20px;
+        border: none;
+        background-color: #ff5722;
+        color: white;
+        height: 50px;
+        width: 180px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background-color: #e64a19;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">Box 1</div>
+      <div class="box">Box 2</div>
+      <div class="box">Box 3</div>
+      <div class="box">Box 4</div>
+      <div class="box">Box 5</div>
+      <div class="box">Box 6</div>
+      <div class="box">Box 7</div>
+      <div class="box">Box 8</div>
+      <div class="box">Box 9</div>
+      <div class="box">Box 10</div>
+    </div>
+
+    <button>Change Colors</button>
+
+    <script>
+      let btn = document.querySelector("button");
+
+      btn.addEventListener("click", function () {
+        function RandomColor() {
+          let code = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += code[Math.floor(Math.random() * 16)];
+          }
+          return color;
+        }
+
+        let boxes = document.querySelectorAll(".box");
+
+        boxes.forEach((box) => {
+          box.style.color = RandomColor();
+          box.style.backgroundColor = RandomColor();
+
+          box.style.border = "2px solid transparent";
+        });
+      });
+    </script>
+  </body>
+</html>
